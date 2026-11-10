@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242998603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18242998603');
+</script>
+<!-- Google Ads website call conversion -->
+<script>
+  gtag('config', 'AW-18242998603/Zw8wCMXFsOEcEMui-PpD', {
+    'phone_conversion_number': '(469) 972-3568'
+  });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Received — American Glass Solutions</title>
+<link rel="stylesheet" href="../css/payments-app.css">
+<style>
+  .confirm-card{text-align:center;padding:36px 20px;margin-top:8px;}
+  .check-circle{
+    width:64px;height:64px;border-radius:50%;
+    background:var(--accent-dark);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+    margin:0 auto 16px;
+  }
+  .confirm-title{font-size:21px;font-weight:800;margin:0 0 8px;color:var(--navy);}
+  .confirm-sub{font-size:14.5px;color:var(--muted);margin:0 0 20px;line-height:1.5;}
+  .next-steps{
+    text-align:left;
+    background:var(--surface-2);
+    border-radius:12px;
+    padding:16px;
+    margin-top:18px;
+  }
+  .next-steps p{margin:0 0 8px;font-size:13.5px;color:var(--text);}
+  .next-steps p:last-child{margin-bottom:0;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <img src="../images/AGS_Logo.png" alt="American Glass Solutions" onerror="this.style.display='none'">
+    <span class="brand-name">American Glass Solutions</span>
+  </div>
+  <nav class="site-nav" id="siteNav">
+    <a href="payments.html">Home</a>
+    <a href="payment.html">Pay Now</a>
+  </nav>
+  <button class="nav-toggle" onclick="toggleNav()">☰</button>
+</header>
+
+<div class="container">
+  <div class="card confirm-card">
+    <div class="check-circle">✓</div>
+    <p class="confirm-title">Payment Received</p>
+    <p class="confirm-sub" id="paymentSummary">Thanks — your job is confirmed. A copy of your receipt has been sent to you, and our team has been notified.</p>
+
+    <div class="next-steps">
+      <p><strong>What happens next:</strong></p>
+      <p>1. Our installer will confirm your appointment window.</p>
+      <p>2. If you have any questions before then, reply to your receipt email or call us directly.</p>
+      <p>3. Keep this confirmation for your records.</p>
+    </div>
+  </div>
+
+  <a href="payments.html" class="btn btn-ghost btn-block" style="margin-top:16px;">Start New Quote</a>
+</div>
+
+<footer class="site-footer">American Glass Solutions · Dallas–Fort Worth, TX</footer>
+
+<script src="../js/payments-app.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const method = params.get('method');
+  const amount = Number(params.get('amount'));
+  const labels = { card:'Card', zelle:'Zelle', cash:'Cash' };
+  if(method && amount){
+    document.getElementById('paymentSummary').textContent =
+      `$${amount.toLocaleString('en-US')} received via ${labels[method] || method}. Job confirmed — thanks!`;
+  }
+</script>
+</body>
+</html>

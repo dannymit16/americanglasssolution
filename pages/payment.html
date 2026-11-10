@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242998603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18242998603');
+</script>
+<!-- Google Ads website call conversion -->
+<script>
+  gtag('config', 'AW-18242998603/Zw8wCMXFsOEcEMui-PpD', {
+    'phone_conversion_number': '(469) 972-3568'
+  });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay Now — American Glass Solutions</title>
+<link rel="stylesheet" href="../css/payments-app.css">
+<style>
+  .amount-card{text-align:center;padding:26px 18px;}
+  .amount-label{font-size:11.5px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:var(--muted);margin:0 0 6px;}
+  .amount-value{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-0.02em;}
+  .amount-edit{margin-top:12px;}
+  .amount-edit input{width:140px;padding:10px;text-align:center;font-size:16px;font-weight:700;border-radius:9px;border:1.5px solid var(--line);}
+
+  .method-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;margin-bottom:16px;}
+  .method-btn{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 6px;
+    text-align:center;
+    cursor:pointer;
+    font-weight:700;
+    font-size:13.5px;
+  }
+  .method-btn .icon{font-size:22px;display:block;margin-bottom:6px;}
+  .method-btn.selected{border-color:var(--accent);background:rgba(47,130,166,0.08);color:var(--accent-dark);}
+
+  .action-panel{display:none;}
+  .action-panel.show{display:block;}
+  .qr-box{display:flex;justify-content:center;padding:14px;background:#fff;border-radius:12px;border:1px solid var(--line);margin-bottom:14px;}
+  .qr-box img{width:200px;height:auto;display:block;}
+  .action-note{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;text-align:center;}
+  .charge-amount-big{font-size:28px;font-weight:800;color:var(--navy);text-align:center;margin-bottom:16px;}
+  .confirm-btn{background:var(--accent-dark);color:#fff;}
+  .todo-flag{background:#FFF4E5;border:1px solid #F0C572;color:#8A5A00;font-size:12px;padding:8px 10px;border-radius:8px;margin-top:12px;text-align:left;}
+  .mobile-only-btn{display:none;}
+  @media (max-width:640px){
+    .mobile-only-btn{display:flex;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <img src="../images/AGS_Logo.png" alt="American Glass Solutions" onerror="this.style.display='none'">
+    <span class="brand-name">American Glass Solutions</span>
+  </div>
+  <nav class="site-nav" id="siteNav">
+    <a href="payments.html">Home</a>
+    <a href="payment.html" class="active">Pay Now</a>
+  </nav>
+  <button class="nav-toggle" onclick="toggleNav()">☰</button>
+</header>
+
+<div class="container">
+
+  <div class="card amount-card">
+    <p class="amount-label">Amount Due</p>
+    <div class="amount-value" id="amountDisplay">$0</div>
+    <div class="amount-edit">
+      <input type="number" id="amountInput" placeholder="Enter amount" oninput="updateAmount()">
+    </div>
+  </div>
+
+  <p class="section-eyebrow" style="margin-top:18px;">How is the customer paying?</p>
+  <div class="method-row">
+    <div class="method-btn" id="btn-card" onclick="selectMethod('card')"><span class="icon">💳</span>Card</div>
+    <div class="method-btn" id="btn-zelle" onclick="selectMethod('zelle')"><span class="icon">📱</span>Zelle</div>
+    <div class="method-btn" id="btn-cash" onclick="selectMethod('cash')"><span class="icon">💵</span>Cash</div>
+  </div>
+
+  <!-- CARD PANEL -->
+  <div class="card action-panel" id="panel-card">
+    <div class="charge-amount-big" id="cardAmountLabel">$0</div>
+    <p class="action-note">Open your card processor app and charge this amount using Tap to Pay / your card reader.</p>
+    <a id="cardAppBtn" class="btn btn-primary btn-block mobile-only-btn" style="gap:8px;"
+       href="https://apps.apple.com/us/app/scanpay-payments-invoicing/id1572936786">
+      <img src="../images/scanpay-icon.png" alt="" style="width:20px;height:20px;border-radius:5px;" onerror="this.style.display='none';document.getElementById('cardAppBtnIcon').style.display='inline';">
+      <span id="cardAppBtnIcon" style="display:none;">📲</span> Open ScanPay
+    </a>
+    <button class="btn confirm-btn btn-block" style="margin-top:10px;" onclick="confirmPaid('card')">✓ Payment Charged</button>
+    <div class="todo-flag">
+      ⚠ ScanPay has no publicly documented deep link or universal link, so this button goes straight to their
+      App Store page (same tab) rather than guessing a URL scheme. It's hidden on desktop since it's only useful
+      on the phone you're charging from. If ScanPay support gives you a verified deep link later
+      (support@goscanpay.com), send it to me and I'll wire in an app-first attempt with this as the fallback.
+    </div>
+  </div>
+
+  <!-- ZELLE PANEL -->
+  <div class="card action-panel" id="panel-zelle">
+    <div class="qr-box"><img src="../images/zelle-qr.jpg" alt="Scan to pay with Zelle"></div>
+    <p class="action-note">Hand the tablet to the customer to scan, or let them scan your phone. Tell them the amount above — Zelle doesn't auto-fill it.</p>
+    <button class="btn confirm-btn btn-block" onclick="confirmPaid('zelle')">✓ Payment Received</button>
+  </div>
+
+  <!-- CASH PANEL -->
+  <div class="card action-panel" id="panel-cash">
+    <div class="charge-amount-big" id="cashAmountLabel">$0</div>
+    <p class="action-note">Collect cash from the customer, then confirm below.</p>
+    <button class="btn confirm-btn btn-block" onclick="confirmPaid('cash')">✓ Collect Cash</button>
+  </div>
+
+</div>
+
+<footer class="site-footer">American Glass Solutions · Dallas–Fort Worth, TX</footer>
+
+<script src="../js/payments-app.js"></script>
+<script>
+// ScanPay has no verified deep link — the "Open ScanPay" button links straight
+// to the App Store page (see the <a id="cardAppBtn"> element above).
+
+function getAmountFromUrl(){
+  const params = new URLSearchParams(window.location.search);
+  const amt = Number(params.get('amount'));
+  return amt > 0 ? amt : 0;
+}
+let currentAmount = getAmountFromUrl();
+let selectedMethod = null;
+
+function updateAmount(){
+  currentAmount = Number(document.getElementById('amountInput').value) || 0;
+  render();
+}
+
+function selectMethod(method){
+  selectedMethod = method;
+  document.querySelectorAll('.method-btn').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('btn-'+method).classList.add('selected');
+  document.querySelectorAll('.action-panel').forEach(p=>p.classList.remove('show'));
+  document.getElementById('panel-'+method).classList.add('show');
+  render();
+}
+
+function confirmPaid(method){
+  window.location.href = `thank-you.html?method=${method}&amount=${Math.round(currentAmount)}`;
+}
+
+function render(){
+  document.getElementById('amountDisplay').textContent = '$' + currentAmount.toLocaleString('en-US');
+  document.getElementById('amountInput').value = currentAmount || '';
+  document.getElementById('cardAmountLabel').textContent = '$' + currentAmount.toLocaleString('en-US');
+  document.getElementById('cashAmountLabel').textContent = '$' + currentAmount.toLocaleString('en-US');
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242998603"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18242998603');
+</script>
+<!-- Google Ads website call conversion -->
+<script>
+  gtag('config', 'AW-18242998603/Zw8wCMXFsOEcEMui-PpD', {
+    'phone_conversion_number': '(469) 972-3568'
+  });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Get a Quote — American Glass Solutions</title>
+<link rel="stylesheet" href="../css/payments-app.css">
+<style>
+  .add-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+  .add-btn{background:var(--surface);border:1.5px dashed var(--accent);border-radius:var(--radius);padding:18px 10px;text-align:center;cursor:pointer;font-weight:600;font-size:15px;color:var(--accent-dark);}
+  .add-btn:active{transform:scale(0.97);background:var(--surface-2);}
+  .add-btn .icon{font-size:24px;display:block;margin-bottom:6px;}
+  .form-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px;border:1px solid var(--line);}
+  .form-title{font-size:16px;font-weight:700;margin:0 0 14px;}
+  .field-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:600;margin-bottom:7px;display:block;}
+  .field-group{margin-bottom:16px;}
+  .dim-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stepper{display:flex;align-items:center;background:var(--surface-2);border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line);}
+  .stepper button{background:transparent;border:none;width:42px;height:44px;font-size:19px;color:var(--accent-dark);font-weight:700;cursor:pointer;}
+  .stepper input{flex:1;border:none;background:transparent;text-align:center;font-size:17px;font-weight:700;padding:0;width:100%;color:var(--text);}
+  .stepper input:focus{outline:none;}
+  .unit-suffix{font-size:12px;color:var(--muted);margin-top:5px;}
+  .chip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .chip-grid.cols3{grid-template-columns:1fr 1fr 1fr;}
+  .chip{padding:12px 8px;text-align:center;background:var(--surface-2);border:1.5px solid var(--line);border-radius:var(--radius-sm);font-size:13.5px;font-weight:600;color:var(--text);cursor:pointer;}
+  .chip.selected{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .form-actions{display:flex;gap:10px;margin-top:18px;}
+  .form-actions .btn{flex:1;}
+  .cart-section{margin-bottom:18px;}
+  .cart-item{background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--line);padding:13px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;box-shadow:var(--shadow);}
+  .cart-item-desc{font-size:14px;font-weight:600;}
+  .cart-item-sub{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .cart-item-right{display:flex;align-items:center;gap:12px;}
+  .cart-item-price{font-size:15px;font-weight:700;}
+  .remove-btn{background:var(--danger-bg);color:var(--danger);border:none;width:30px;height:30px;border-radius:50%;font-size:15px;font-weight:700;cursor:pointer;line-height:1;}
+  .empty-cart{text-align:center;color:var(--muted);font-size:13.5px;padding:22px 10px;background:var(--surface-2);border-radius:var(--radius-sm);}
+  .summary-card{margin-bottom:18px;}
+  .summary-line{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:var(--muted);}
+  .coupon-row{display:flex;gap:8px;margin:12px 0 4px;}
+  .coupon-row input{flex:1;padding:11px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--line);font-size:14px;text-transform:uppercase;}
+  .coupon-row input:focus{outline:none;border-color:var(--accent);}
+  .coupon-apply{background:var(--navy);color:#fff;border:none;border-radius:var(--radius-sm);padding:0 16px;font-weight:700;font-size:13.5px;cursor:pointer;}
+  .coupon-msg{font-size:12.5px;margin-top:6px;font-weight:600;}
+  .coupon-msg.ok{color:var(--accent-dark);}
+  .coupon-msg.err{color:var(--danger);}
+  .total-pane{position:relative;margin-top:16px;border-radius:var(--radius);padding:20px 18px;background:linear-gradient(135deg, rgba(47,130,166,0.12), rgba(31,111,120,0.18));border:1px solid rgba(47,130,166,0.35);overflow:hidden;}
+  .total-pane::before{content:"";position:absolute;top:0;left:-30%;width:60%;height:100%;background:linear-gradient(115deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%);transform:skewX(-18deg);pointer-events:none;}
+  .total-label{font-size:11.5px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;color:var(--accent-dark);margin:0 0 4px;}
+  .total-amount{font-size:34px;font-weight:800;letter-spacing:-0.02em;color:var(--navy);position:relative;}
+  .total-sub{font-size:12.5px;color:var(--muted);margin-top:4px;position:relative;}
+  .close-actions{display:flex;gap:10px;}
+  .close-actions .btn:first-child{flex:1;}
+  .success-banner{background:var(--accent-dark);color:#fff;border-radius:var(--radius);padding:22px 18px;text-align:center;margin-bottom:18px;}
+  .success-banner .big{font-size:19px;font-weight:800;margin-bottom:4px;}
+  .success-banner .small{font-size:13px;opacity:0.85;}
+  .gear-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);color:#fff;width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;}
+  .modal-overlay{position:fixed;inset:0;background:rgba(18,34,46,0.55);display:flex;align-items:flex-end;justify-content:center;z-index:100;}
+  .modal-overlay.hidden{display:none;}
+  .modal{background:var(--surface);width:100%;max-width:640px;max-height:88vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:22px 18px 30px;box-shadow:var(--shadow-lg);}
+  .modal-handle{width:40px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 16px;}
+  .modal h3{margin:0 0 4px;font-size:18px;}
+  .modal p.hint{color:var(--muted);font-size:12.5px;margin:0 0 16px;}
+  .pin-input{width:100%;padding:14px;font-size:20px;letter-spacing:0.3em;text-align:center;border-radius:var(--radius-sm);border:1.5px solid var(--line);margin-bottom:14px;}
+  .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px;}
+  .settings-field label{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
+  .settings-field input{width:100%;padding:10px 11px;border-radius:var(--radius-sm);border:1.5px solid var(--line);font-size:14px;font-weight:600;}
+  .settings-divider{border:none;border-top:1px solid var(--line);margin:18px 0 14px;}
+  .coupon-edit-row{display:grid;grid-template-columns:1.2fr 0.8fr 0.8fr auto;gap:8px;align-items:center;margin-bottom:8px;}
+  .coupon-edit-row input, .coupon-edit-row select{padding:9px 8px;border-radius:8px;border:1.5px solid var(--line);font-size:13px;}
+  .save-msg{font-size:13px;color:var(--accent-dark);font-weight:600;margin-top:10px;display:none;}
+
+  .labor-row{margin:10px 0 14px;}
+  .labor-row .field-label{margin-bottom:6px;}
+  .labor-input-wrap{display:flex;align-items:center;background:var(--surface-2);border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:0 12px;}
+  .labor-input-wrap .dollar-prefix{color:var(--muted);font-weight:700;font-size:15px;}
+  .labor-input-wrap input{flex:1;border:none;background:transparent;padding:11px 8px;font-size:15px;font-weight:700;color:var(--text);}
+  .labor-input-wrap input:focus{outline:none;}
+
+  .override-row{margin-top:14px;text-align:center;}
+  .override-toggle{font-size:12.5px;color:var(--accent-dark);font-weight:600;cursor:pointer;text-decoration:underline;}
+  .override-input-wrap{display:flex;gap:8px;margin-top:10px;}
+  .override-input-wrap input{flex:1;padding:11px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--line);font-size:14px;font-weight:700;text-align:center;}
+  .override-input-wrap .btn{padding:11px 14px;font-size:13px;}
+  .override-active-note{font-size:11.5px;color:var(--accent-dark);font-weight:700;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <img src="../images/AGS_Logo.png" alt="American Glass Solutions" onerror="this.style.display='none'">
+    <span class="brand-name">American Glass Solutions</span>
+  </div>
+  <nav class="site-nav" id="siteNav">
+    <a href="payments.html" class="active">Home</a>
+    <a href="payment.html">Pay Now</a>
+  </nav>
+  <button class="gear-btn" onclick="openSettings()" title="Pricing settings">⚙</button>
+</header>
+
+<div class="container">
+
+  <div class="add-row">
+    <div class="add-btn" onclick="showForm('window')"><span class="icon">▭</span>Add Window</div>
+    <div class="add-btn" onclick="showForm('slider')"><span class="icon">▬</span>Add Sliding Door</div>
+  </div>
+
+  <div id="formArea"></div>
+
+  <div class="cart-section">
+    <p class="section-eyebrow">Quote Items</p>
+    <div id="cartList"></div>
+  </div>
+
+  <div class="card summary-card">
+    <div class="summary-line"><span>Materials + Install Subtotal</span><span id="subtotalLine">$0</span></div>
+
+    <div class="labor-row">
+      <span class="field-label">Labor (manual)</span>
+      <div class="labor-input-wrap">
+        <span class="dollar-prefix">$</span>
+        <input type="number" id="laborInput" placeholder="0" oninput="updateLabor()">
+      </div>
+    </div>
+
+    <div class="summary-line" id="discountLine" style="display:none;"><span>Discount</span><span id="discountAmount">-$0</span></div>
+
+    <div class="coupon-row">
+      <input type="text" id="couponInput" placeholder="COUPON CODE">
+      <button class="coupon-apply" onclick="applyCoupon()">Apply</button>
+    </div>
+    <div class="coupon-msg" id="couponMsg"></div>
+
+    <div class="total-pane">
+      <p class="total-label">Total Due Today</p>
+      <div class="total-amount" id="grandTotal">$0</div>
+      <p class="total-sub" id="itemCountLabel">0 items</p>
+    </div>
+
+    <div class="override-row">
+      <span class="override-toggle" onclick="toggleOverride()">Adjust total manually</span>
+      <div class="override-input-wrap" id="overridePanel" style="display:none;">
+        <input type="number" id="overrideInput" placeholder="Enter final amount">
+        <button class="btn btn-ghost" onclick="applyOverride()">Apply</button>
+      </div>
+      <p class="override-active-note" id="overrideNote" style="display:none;">Manual total active — <span onclick="clearOverride()" style="text-decoration:underline;cursor:pointer;">clear</span></p>
+    </div>
+  </div>
+
+  <div class="close-actions">
+    <button class="btn btn-primary" onclick="closeDeal()">✓ Customer Accepts — Proceed to Payment</button>
+    <button class="btn btn-ghost" onclick="resetQuote()">New</button>
+  </div>
+
+</div>
+
+<footer class="site-footer">American Glass Solutions · Dallas–Fort Worth, TX</footer>
+
+<!-- Settings Modal -->
+<div class="modal-overlay hidden" id="settingsOverlay">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div id="pinScreen">
+      <h3>Manager Access</h3>
+      <p class="hint">Enter PIN to edit pricing &amp; coupons</p>
+      <input type="tel" inputmode="numeric" class="pin-input" id="pinField" placeholder="••••" maxlength="6">
+      <button class="btn btn-primary btn-block" onclick="checkPin()">Unlock</button>
+      <p class="hint" id="pinError" style="color:var(--danger);display:none;">Incorrect PIN</p>
+      <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="closeSettings()">Cancel</button>
+    </div>
+    <div id="settingsScreen" style="display:none;">
+      <h3>Pricing Settings</h3>
+      <p class="hint">These numbers control every quote. Adjust to match your real costs + margin.</p>
+      <div class="settings-grid">
+        <div class="settings-field"><label>Window $/sqft (base)</label><input type="number" id="s_windowPsf"></div>
+        <div class="settings-field"><label>Slider Door $/sqft (base)</label><input type="number" id="s_sliderPsf"></div>
+        <div class="settings-field"><label>Double Pane Multiplier</label><input type="number" step="0.05" id="s_paneMult"></div>
+        <div class="settings-field"><label>Window Min Charge $</label><input type="number" id="s_windowMin"></div>
+        <div class="settings-field"><label>Slider Min Charge $</label><input type="number" id="s_sliderMin"></div>
+        <div class="settings-field"><label>Window Install Fee $</label><input type="number" id="s_windowInstall"></div>
+        <div class="settings-field"><label>Slider Install Fee $</label><input type="number" id="s_sliderInstall"></div>
+      </div>
+      <hr class="settings-divider">
+      <p class="field-label" style="margin-bottom:10px;">Glass Type Multipliers</p>
+      <div class="settings-grid">
+        <div class="settings-field"><label>Clear</label><input type="number" step="0.05" id="s_gClear"></div>
+        <div class="settings-field"><label>Tempered</label><input type="number" step="0.05" id="s_gTempered"></div>
+        <div class="settings-field"><label>Frosted / Privacy</label><input type="number" step="0.05" id="s_gFrosted"></div>
+        <div class="settings-field"><label>Tinted</label><input type="number" step="0.05" id="s_gTinted"></div>
+        <div class="settings-field"><label>Low-E</label><input type="number" step="0.05" id="s_gLowE"></div>
+      </div>
+      <hr class="settings-divider">
+      <p class="field-label" style="margin-bottom:10px;">Coupon Codes</p>
+      <div id="couponEditList"></div>
+      <button class="btn btn-ghost" style="margin-top:6px;" onclick="addCouponRow()">+ Add Coupon</button>
+      <hr class="settings-divider">
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-primary" onclick="saveSettings()">Save Changes</button>
+        <button class="btn btn-ghost" onclick="closeSettings()">Close</button>
+      </div>
+      <p class="save-msg" id="saveMsg">✓ Saved</p>
+    </div>
+  </div>
+</div>
+
+<script src="../js/payments-app.js"></script>
+<script>
+const DEFAULT_PRICING = {
+  windowPsf: 42, sliderPsf: 58, paneMultiplier: 1.75,
+  windowMin: 150, sliderMin: 350,
+  windowInstall: 75, sliderInstall: 150,
+  glassMult: { clear:1.0, tempered:1.5, frosted:1.3, tinted:1.25, lowe:1.4 },
+  coupons: [
+    { code:"SAVE50", type:"fixed", value:50 },
+    { code:"SAVE10", type:"percent", value:10 },
+    { code:"TODAY100", type:"fixed", value:100 },
+    { code:"SENIOR", type:"percent", value:15 }
+  ]
+};
+const SETTINGS_PIN = "1234";
+const STORAGE_KEY = "ags-glass-quote-pricing-v1";
+
+let PRICING = JSON.parse(JSON.stringify(DEFAULT_PRICING));
+let cart = [];
+let appliedDiscount = 0;
+let appliedCouponCode = null;
+let laborCost = 0;
+let overrideTotal = null;
+
+async function loadPricing(){
+  try{
+    const res = await window.storage.get(STORAGE_KEY, false);
+    if(res && res.value) PRICING = JSON.parse(res.value);
+  }catch(e){}
+}
+async function savePricing(){
+  try{ await window.storage.set(STORAGE_KEY, JSON.stringify(PRICING), false); }catch(e){}
+}
+
+let currentForm = null;
+let formState = { width:36, height:48, pane:'single', glass:'clear', qty:1 };
+
+function showForm(type){ currentForm = type; formState = { width:36, height:48, pane:'single', glass:'clear', qty:1 }; renderForm(); }
+
+function renderForm(){
+  const area = document.getElementById('formArea');
+  if(!currentForm){ area.innerHTML=''; return; }
+  const title = currentForm === 'window' ? 'New Window' : 'New Sliding Glass Door';
+  const icon = currentForm === 'window' ? '▭' : '▬';
+  area.innerHTML = `
+    <div class="form-card">
+      <p class="form-title">${icon} ${title}</p>
+      <div class="field-group">
+        <span class="field-label">Dimensions (inches)</span>
+        <div class="dim-row">
+          <div><div class="stepper"><button onclick="adjustDim('width',-1)">−</button><input type="number" id="widthInput" value="${formState.width}" oninput="formState.width=Number(this.value)||0"><button onclick="adjustDim('width',1)">+</button></div><div class="unit-suffix">Width</div></div>
+          <div><div class="stepper"><button onclick="adjustDim('height',-1)">−</button><input type="number" id="heightInput" value="${formState.height}" oninput="formState.height=Number(this.value)||0"><button onclick="adjustDim('height',1)">+</button></div><div class="unit-suffix">Height</div></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">Pane Type</span>
+        <div class="chip-grid">
+          <div class="chip ${formState.pane==='single'?'selected':''}" onclick="setField('pane','single')">Single Pane</div>
+          <div class="chip ${formState.pane==='double'?'selected':''}" onclick="setField('pane','double')">Double Pane</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">Glass Type</span>
+        <div class="chip-grid cols3">
+          <div class="chip ${formState.glass==='clear'?'selected':''}" onclick="setField('glass','clear')">Clear</div>
+          <div class="chip ${formState.glass==='tempered'?'selected':''}" onclick="setField('glass','tempered')">Tempered</div>
+          <div class="chip ${formState.glass==='frosted'?'selected':''}" onclick="setField('glass','frosted')">Frosted / Privacy</div>
+          <div class="chip ${formState.glass==='tinted'?'selected':''}" onclick="setField('glass','tinted')">Tinted</div>
+          <div class="chip ${formState.glass==='lowe'?'selected':''}" onclick="setField('glass','lowe')">Low-E</div>
+        </div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">Quantity</span>
+        <div class="stepper" style="max-width:160px;"><button onclick="adjustDim('qty',-1)">−</button><input type="number" id="qtyInput" value="${formState.qty}" oninput="formState.qty=Number(this.value)||1"><button onclick="adjustDim('qty',1)">+</button></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-ghost" onclick="cancelForm()">Cancel</button>
+        <button class="btn btn-primary" onclick="addToCart()">Add to Cart — <span id="livePrice">$0</span></button>
+      </div>
+    </div>`;
+  updateLivePrice();
+}
+function adjustDim(field, delta){ formState[field] = Math.max(1, (formState[field]||0) + delta); renderForm(); }
+function setField(field, value){ formState[field] = value; renderForm(); }
+function cancelForm(){ currentForm = null; renderForm(); }
+
+function computeItemPrice(type, state){
+  const sqft = (state.width * state.height) / 144;
+  const basePsf = type === 'window' ? PRICING.windowPsf : PRICING.sliderPsf;
+  const paneMult = state.pane === 'double' ? PRICING.paneMultiplier : 1.0;
+  const glassMult = PRICING.glassMult[state.glass] || 1.0;
+  let materialPrice = sqft * basePsf * paneMult * glassMult;
+  const minCharge = type === 'window' ? PRICING.windowMin : PRICING.sliderMin;
+  materialPrice = Math.max(materialPrice, minCharge);
+  const installFee = type === 'window' ? PRICING.windowInstall : PRICING.sliderInstall;
+  const perUnit = materialPrice + installFee;
+  const lineTotal = perUnit * state.qty;
+  return { sqft, materialPrice, installFee, perUnit, lineTotal };
+}
+function updateLivePrice(){ const calc = computeItemPrice(currentForm, formState); const el = document.getElementById('livePrice'); if(el) el.textContent = fmt(calc.lineTotal); }
+document.addEventListener('input', (e)=>{ if(['widthInput','heightInput','qtyInput'].includes(e.target.id)) updateLivePrice(); });
+
+function addToCart(){
+  if(formState.width<=0 || formState.height<=0){ alert('Enter width and height'); return; }
+  const calc = computeItemPrice(currentForm, formState);
+  cart.push({ id: Date.now(), type: currentForm, label: currentForm === 'window' ? 'Window' : 'Sliding Glass Door',
+    width: formState.width, height: formState.height, pane: formState.pane, glass: formState.glass, qty: formState.qty,
+    lineTotal: calc.lineTotal, installFee: calc.installFee, materialPrice: calc.materialPrice });
+  currentForm = null; renderForm(); renderCart();
+}
+function removeItem(id){ cart = cart.filter(i=>i.id!==id); renderCart(); }
+const GLASS_LABELS = {clear:'Clear', tempered:'Tempered', frosted:'Frosted/Privacy', tinted:'Tinted', lowe:'Low-E'};
+
+function renderCart(){
+  const list = document.getElementById('cartList');
+  if(cart.length===0){
+    list.innerHTML = '<div class="empty-cart">No items yet — tap "Add Window" or "Add Sliding Door" above.</div>';
+  } else {
+    list.innerHTML = cart.map(item=>`
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-desc">${item.label} — ${item.width}"×${item.height}" ${item.qty>1?`(×${item.qty})`:''}</div>
+          <div class="cart-item-sub">${item.pane==='double'?'Double Pane':'Single Pane'} · ${GLASS_LABELS[item.glass]} · incl. install $${item.installFee}/unit</div>
+        </div>
+        <div class="cart-item-right"><div class="cart-item-price">${fmt(item.lineTotal)}</div><button class="remove-btn" onclick="removeItem(${item.id})">✕</button></div>
+      </div>`).join('');
+  }
+  recalcTotals();
+}
+function subtotal(){ return cart.reduce((s,i)=>s+i.lineTotal,0); }
+
+function updateLabor(){
+  laborCost = Number(document.getElementById('laborInput').value) || 0;
+  recalcTotals();
+}
+
+function toggleOverride(){
+  const panel = document.getElementById('overridePanel');
+  panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+  if(panel.style.display === 'flex'){
+    document.getElementById('overrideInput').value = overrideTotal !== null ? overrideTotal : '';
+  }
+}
+function applyOverride(){
+  const val = Number(document.getElementById('overrideInput').value);
+  if(!val || val <= 0){ alert('Enter a valid amount'); return; }
+  overrideTotal = val;
+  document.getElementById('overridePanel').style.display = 'none';
+  recalcTotals();
+}
+function clearOverride(){
+  overrideTotal = null;
+  recalcTotals();
+}
+
+function calculatedTotal(){
+  const sub = subtotal() + laborCost;
+  let discount = 0;
+  if(appliedCouponCode){
+    const c = PRICING.coupons.find(c=>c.code===appliedCouponCode);
+    if(c){ discount = c.type==='percent' ? sub*(c.value/100) : c.value; discount = Math.min(discount, sub); }
+  }
+  return { sub, discount, total: Math.max(sub - discount, 0) };
+}
+
+function finalTotal(){
+  const calc = calculatedTotal();
+  return overrideTotal !== null ? overrideTotal : calc.total;
+}
+
+function recalcTotals(){
+  const materialsSub = subtotal();
+  document.getElementById('subtotalLine').textContent = fmt(materialsSub);
+  const itemCount = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('itemCountLabel').textContent = itemCount + (itemCount===1?' item':' items');
+
+  const calc = calculatedTotal();
+  appliedDiscount = calc.discount;
+  const discountLine = document.getElementById('discountLine');
+  if(calc.discount>0){ discountLine.style.display='flex'; document.getElementById('discountAmount').textContent = '-' + fmt(calc.discount); }
+  else{ discountLine.style.display='none'; }
+
+  document.getElementById('grandTotal').textContent = fmt(finalTotal());
+
+  const overrideNote = document.getElementById('overrideNote');
+  overrideNote.style.display = overrideTotal !== null ? 'block' : 'none';
+}
+function applyCoupon(){
+  const input = document.getElementById('couponInput');
+  const code = input.value.trim().toUpperCase();
+  const msg = document.getElementById('couponMsg');
+  if(!code) return;
+  const c = PRICING.coupons.find(c=>c.code===code);
+  if(c){ appliedCouponCode = code; msg.textContent = `✓ Applied ${c.code} (${c.type==='percent'?c.value+'% off':'$'+c.value+' off'})`; msg.className = 'coupon-msg ok'; }
+  else{ appliedCouponCode = null; msg.textContent = '✕ Invalid code'; msg.className = 'coupon-msg err'; }
+  recalcTotals();
+}
+function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function closeDeal(){
+  if(cart.length===0 && laborCost<=0){ alert('Add at least one item or a labor charge before closing.'); return; }
+  const total = finalTotal();
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+    <div class="success-banner">
+      <div class="big">Total Due: ${fmt(total)}</div>
+      <div class="small">Send the customer to payment to finish on the spot.</div>
+    </div>
+    <a class="btn btn-primary btn-block" href="payment.html?amount=${Math.round(total)}">Go to Payment →</a>
+    <button class="btn btn-ghost btn-block" style="margin-top:10px;" onclick="location.reload()">Start New Quote</button>
+  `;
+}
+function resetQuote(){
+  if(cart.length>0 && !confirm('Clear this quote and start over?')) return;
+  cart = []; appliedCouponCode = null; laborCost = 0; overrideTotal = null;
+  document.getElementById('couponInput').value=''; document.getElementById('couponMsg').textContent='';
+  document.getElementById('laborInput').value='';
+  currentForm = null; renderForm(); renderCart();
+}
+
+function openSettings(){
+  document.getElementById('settingsOverlay').classList.remove('hidden');
+  document.getElementById('pinScreen').style.display='block';
+  document.getElementById('settingsScreen').style.display='none';
+  document.getElementById('pinField').value=''; document.getElementById('pinError').style.display='none';
+}
+function closeSettings(){ document.getElementById('settingsOverlay').classList.add('hidden'); }
+function checkPin(){
+  const val = document.getElementById('pinField').value;
+  if(val === SETTINGS_PIN){ document.getElementById('pinScreen').style.display='none'; document.getElementById('settingsScreen').style.display='block'; fillSettingsForm(); }
+  else{ document.getElementById('pinError').style.display='block'; }
+}
+function fillSettingsForm(){
+  document.getElementById('s_windowPsf').value = PRICING.windowPsf;
+  document.getElementById('s_sliderPsf').value = PRICING.sliderPsf;
+  document.getElementById('s_paneMult').value = PRICING.paneMultiplier;
+  document.getElementById('s_windowMin').value = PRICING.windowMin;
+  document.getElementById('s_sliderMin').value = PRICING.sliderMin;
+  document.getElementById('s_windowInstall').value = PRICING.windowInstall;
+  document.getElementById('s_sliderInstall').value = PRICING.sliderInstall;
+  document.getElementById('s_gClear').value = PRICING.glassMult.clear;
+  document.getElementById('s_gTempered').value = PRICING.glassMult.tempered;
+  document.getElementById('s_gFrosted').value = PRICING.glassMult.frosted;
+  document.getElementById('s_gTinted').value = PRICING.glassMult.tinted;
+  document.getElementById('s_gLowE').value = PRICING.glassMult.lowe;
+  renderCouponEditList();
+}
+function renderCouponEditList(){
+  const wrap = document.getElementById('couponEditList');
+  wrap.innerHTML = PRICING.coupons.map((c,idx)=>`
+    <div class="coupon-edit-row">
+      <input type="text" value="${c.code}" onchange="updateCoupon(${idx},'code',this.value.toUpperCase())">
+      <select onchange="updateCoupon(${idx},'type',this.value)">
+        <option value="fixed" ${c.type==='fixed'?'selected':''}>$ off</option>
+        <option value="percent" ${c.type==='percent'?'selected':''}>% off</option>
+      </select>
+      <input type="number" value="${c.value}" onchange="updateCoupon(${idx},'value',Number(this.value))">
+      <button class="remove-btn" onclick="deleteCoupon(${idx})">✕</button>
+    </div>`).join('');
+}
+function updateCoupon(idx, field, value){ PRICING.coupons[idx][field] = value; }
+function deleteCoupon(idx){ PRICING.coupons.splice(idx,1); renderCouponEditList(); }
+function addCouponRow(){ PRICING.coupons.push({code:'NEWCODE', type:'fixed', value:25}); renderCouponEditList(); }
+async function saveSettings(){
+  PRICING.windowPsf = Number(document.getElementById('s_windowPsf').value);
+  PRICING.sliderPsf = Number(document.getElementById('s_sliderPsf').value);
+  PRICING.paneMultiplier = Number(document.getElementById('s_paneMult').value);
+  PRICING.windowMin = Number(document.getElementById('s_windowMin').value);
+  PRICING.sliderMin = Number(document.getElementById('s_sliderMin').value);
+  PRICING.windowInstall = Number(document.getElementById('s_windowInstall').value);
+  PRICING.sliderInstall = Number(document.getElementById('s_sliderInstall').value);
+  PRICING.glassMult.clear = Number(document.getElementById('s_gClear').value);
+  PRICING.glassMult.tempered = Number(document.getElementById('s_gTempered').value);
+  PRICING.glassMult.frosted = Number(document.getElementById('s_gFrosted').value);
+  PRICING.glassMult.tinted = Number(document.getElementById('s_gTinted').value);
+  PRICING.glassMult.lowe = Number(document.getElementById('s_gLowE').value);
+  await savePricing();
+  const msg = document.getElementById('saveMsg'); msg.style.display='block'; setTimeout(()=>{ msg.style.display='none'; }, 2000);
+  renderCart();
+}
+(async function init(){ await loadPricing(); renderForm(); renderCart(); })();
+</script>
+</body>
+</html>
